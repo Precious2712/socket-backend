@@ -10,7 +10,7 @@ import * as bcrypt from 'bcrypt';
 export class AuthService {
     constructor(
         @InjectModel(Singnup.name) private signupModel: Model<Singnup>
-    ) {}
+    ) { }
 
     async SignupUsers(createAuthDto: CreateAuthDto) {
         const { email, gender, password, firstName, lastName } = createAuthDto;
@@ -128,5 +128,24 @@ export class AuthService {
         }
     }
 
+    async userStatus(login: boolean) {
+        const filter: Record<string, any> = {}
+
+        if (login) {
+            filter.login = login;
+        }
+
+        const offlineOrOnline = await this.signupModel.find(filter);
+
+        if (!offlineOrOnline) {
+            throw new BadRequestException('Search result not found');
+        }
+
+        return {
+            message: 'Document Found',
+            success: true,
+            offlineOrOnline
+        }
+    }
 
 }

@@ -5,13 +5,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { ChatModule } from './chat/chat.module';
-import { RequestModule } from './request/request.module';
 
 import { HttpModule } from '@nestjs/axios';
 import { ScheduleModule } from '@nestjs/schedule';
 
 // import { PingController } from './Keep-Alive/ping.controller';
 // import { KeepAliveService } from './Keep-Alive/keep-alive.service';
+import { RecieverModule } from './reciever/reciever.module';
+import { SenderModule } from './sender/sender.module';
 
 @Module({
   imports: [
@@ -38,7 +39,9 @@ import { ScheduleModule } from '@nestjs/schedule';
 
     ChatModule,
 
-    RequestModule,
+    RecieverModule,
+
+    SenderModule,
 
     // ScheduleModule.forRoot(),
     // HttpModule,

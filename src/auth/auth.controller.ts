@@ -5,7 +5,7 @@ import { SearchUserDto } from './dto/search-user.dto';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private readonly authService: AuthService) {}
+    constructor(private readonly authService: AuthService) { }
 
     @Post('create')
     async create(@Body() createAuthDto: CreateAuthDto) {
@@ -35,6 +35,11 @@ export class AuthController {
     @Get('search')
     async searchField(@Query() query: SearchUserDto) {
         return this.authService.searchParameter(query);
+    }
+
+    @Get('status-check')
+    async checkIsLoginOrNot(@Query('login') login: boolean) {
+        return this.authService.userStatus(login);
     }
 
 }
