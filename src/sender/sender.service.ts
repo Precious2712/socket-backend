@@ -17,7 +17,7 @@ export class SenderService {
     constructor(
         @InjectModel(Sender.name) private senderModel: Model<Sender>,
         @InjectModel(Singnup.name) private userModel: Model<Singnup>,
-    ) { }
+    ) {}
 
     private normalizePair(a: string, b: string): string {
         return a < b ? `${a}_${b}` : `${b}_${a}`;
