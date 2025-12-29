@@ -10,7 +10,7 @@ import * as bcrypt from 'bcrypt';
 export class AuthService {
     constructor(
         @InjectModel(Singnup.name) private signupModel: Model<Singnup>
-    ) { }
+    ) {}
 
     async SignupUsers(createAuthDto: CreateAuthDto) {
         const { email, gender, password, firstName, lastName } = createAuthDto;
@@ -145,6 +145,19 @@ export class AuthService {
             message: 'Document Found',
             success: true,
             offlineOrOnline
+        }
+    }
+
+    async getAllUsers() {
+        const users = await this.signupModel.find();
+
+        if (!users) {
+            throw new BadRequestException('No result found');
+        }
+
+        return {
+            message: 'Users document found',
+            users
         }
     }
 

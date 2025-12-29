@@ -4,11 +4,23 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+
+  app.enableCors({
+    origin: [
+      'https://socket-io-frontend-navy.vercel.app',
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'http://localhost:3002',
+    ],
+    credentials: true,
+  });
+
   app.useGlobalPipes(new ValidationPipe());
+
   const port = process.env.PORT || 3000;
-  // await app.listen(process.env.PORT ?? 3000);
   await app.listen(port);
-  console.log(`🚀 Server running on http://localhost:${port}`);
+
+  console.log(`🚀 Server running on port ${port}`);
 }
+
 bootstrap();

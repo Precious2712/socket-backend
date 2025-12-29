@@ -6,7 +6,7 @@ import { UpdateSenderDto } from './dto/update-sender-dto';
 
 @Controller('sender')
 export class SenderController {
-    constructor(private readonly senderService: SenderService) { }
+    constructor(private readonly senderService: SenderService) {}
 
     @Post('send')
     send(@Body() dto: CreateSenderDto) {
