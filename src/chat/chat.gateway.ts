@@ -13,7 +13,7 @@ import { ChatService } from './chat.service';
 @WebSocketGateway({
     cors: {
         origin: [
-            'https://socket-io-frontend-navy.vercel.app',
+            'https://socket-io-frontend-teal.vercel.app',
             'http://localhost:3000',
             'http://localhost:3001',
             'http://localhost:3002',
