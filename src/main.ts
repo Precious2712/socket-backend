@@ -7,7 +7,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'https://socket-io-frontend-teal.vercel.app/',
+      'https://socket-io-frontend-teal.vercel.app',
       'http://localhost:3000',
       'http://localhost:3001',
       'http://localhost:3002',
@@ -15,7 +15,6 @@ async function bootstrap() {
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type'],
   });
-
 
   app.useGlobalPipes(new ValidationPipe());
 
