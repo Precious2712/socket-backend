@@ -13,7 +13,7 @@ import { ChatService } from './chat.service';
 @WebSocketGateway({
     cors: {
         origin: [
-            'https://socket-io-frontend-teal.vercel.app',
+            'https://talk-flow-ten.vercel.app',
             'http://localhost:3000',
             'http://localhost:3001',
             'http://localhost:3002',
@@ -48,7 +48,7 @@ export class ChatGateway
         console.log('Socket disconnected:', socket.id);
     }
 
-    // 1️⃣ Register user when frontend connects
+    // 1 Register user when frontend connects
     @SubscribeMessage('registerUser')
     handleRegisterUser(
         @MessageBody() userId: string,
@@ -58,7 +58,7 @@ export class ChatGateway
         this.server.emit('userOnline', userId);
     }
 
-    // 2️⃣ Join private room (A <-> B)
+    // 2️ Join private room (A <-> B)
     @SubscribeMessage('joinRoom')
     handleJoinRoom(
         @MessageBody()
@@ -69,7 +69,7 @@ export class ChatGateway
         socket.join(roomId);
     }
 
-    // 3️⃣ Load chat history
+    // 3️ Load chat history
     @SubscribeMessage('loadMessages')
     async handleLoadMessages(
         @MessageBody()
@@ -84,7 +84,7 @@ export class ChatGateway
         socket.emit('chatHistory', messages);
     }
 
-    // 4️⃣ Send message
+    // 4️ Send message
     @SubscribeMessage('sendMessage')
     async handleSendMessage(
         @MessageBody()

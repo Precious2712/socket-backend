@@ -7,7 +7,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'https://socket-io-frontend-teal.vercel.app',
+      'https://talk-flow-ten.vercel.app',
       'http://localhost:3000',
       'http://localhost:3001',
       'http://localhost:3002',
